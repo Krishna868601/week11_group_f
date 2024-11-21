@@ -29,6 +29,10 @@ Run the test suite:
 go test
 go test -v
 ```
+
+![image](https://github.com/user-attachments/assets/7a5e190f-408d-4739-89d7-acceef3b17b2)
+
+
 Testing includes:
 - Validating HTTP status codes for existing and non-existent files.
 - Verifying MIME types for HTML, CSS, and JavaScript files.
