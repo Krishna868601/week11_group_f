@@ -72,3 +72,26 @@ func TestFileServer(t *testing.T) {
 		})
 	}
 }
+func TestDefaultFile(t *testing.T) {
+	// Test serving the directory's default index file
+	fs := http.FileServer(http.Dir("./templates"))
+	ts := httptest.NewServer(fs)
+	defer ts.Close()
+
+	resp, err := http.Get(ts.URL + "/")
+	if err != nil {
+		t.Fatalf("Failed to send GET request: %v", err)
+	}
+	defer resp.Body.Close()
+
+	// Check the response status code
+	if resp.StatusCode != http.StatusOK {
+		t.Fatalf("Expected status 200 OK for default file, got: %d", resp.StatusCode)
+	}
+
+	// Ensure content type is HTML
+	contentType := resp.Header.Get("Content-Type")
+	if !strings.HasPrefix(contentType, "text/html") {
+		t.Errorf("Expected MIME type text/html, got: %s", contentType)
+	}
+}
