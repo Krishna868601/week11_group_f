@@ -20,6 +20,10 @@ Access the application in your browser at:
 ``` bash
 http://localhost:80
 ```
+
+![image](https://github.com/user-attachments/assets/c8b18080-173d-49e4-875b-d7f4c8191cfa)
+
+
 Run the test suite:
 ``` bash
 go test
